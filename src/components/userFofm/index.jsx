@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { setUserInfo } from "../../redux/actions/actions";
+import styles from "./styles.module.css";
 
 const UserForm = ({ setUserInfo }) => {
   const [name, setName] = useState("");
@@ -14,26 +15,30 @@ const UserForm = ({ setUserInfo }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <div className={styles.div}>
         <label>Name:</label>
         <input
+          className={styles.input}
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
       </div>
-      <div>
+      <div className={styles.div}>
         <label>Status:</label>
         <input
+          className={styles.input}
           type="text"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
           required
         />
       </div>
-      <button type="submit">Update User Info</button>
+      <button type="submit" className={styles.button}>
+        Update User Info
+      </button>
     </form>
   );
 };
